@@ -56,13 +56,6 @@ pipeline {
                sh "mvn package"
             }
         }
-            stage('PUBLISH IMAGE TO NEXUS') {
-            steps {
-               withMaven(globalMavenSettingsConfig: 'global-settings', jdk: 'jdk17', maven: 'maven3', mavenSettingsConfig: '', traceability: true) {
-                    sh "mvn deploy"
-                }
-            }
-        }
         
        stage('BUILD & TAG DOCKER IMAGE') {
             steps {
